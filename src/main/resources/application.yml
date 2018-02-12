@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.106.127.25:3306/baseproject
+    username: test
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource  #默认使用TomcatJDBD DataSource
+  application:
+    name: spring-cloud-eureka
+server:
+  port: 8000
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
