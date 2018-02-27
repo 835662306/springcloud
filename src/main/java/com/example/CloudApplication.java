@@ -1,17 +1,17 @@
 package com.example;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
-import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@EnableEurekaServer
-@EnableSwagger2 //开启swagger
+//@EnableEurekaServer
+//@EnableSwagger2 //开启swagger
+@MapperScan("com.example.service")
 public class CloudApplication {
 
 	public static void main(String[] args) {

@@ -1,15 +1,18 @@
 package com.example.controller;
 
 import com.example.dao.UserRepostitory;
+import com.example.entry.User;
+import com.example.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.mapping.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Company
@@ -24,6 +27,8 @@ public class UserController {
     @Autowired
     private UserRepostitory userRepostitory;
 
+    @Autowired
+    private UserService userService;
 
     @ApiOperation(value = "获取用户详细信息", notes = "根据url的id来获取用户详细信息")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Integer", paramType = "path")
@@ -41,4 +46,10 @@ public class UserController {
         return "word";
     }
 
+    @ResponseBody
+    @RequestMapping("getAll")
+    public String getAll(){
+        List<User> all = userService.getAll();
+        return all.toString();
+    }
 }

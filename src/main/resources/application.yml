@@ -18,8 +18,24 @@ spring:
   #视图模型解析,静态资源后缀配置
   mvc:
     view:
-      prefix: /static/
-      suffix: .html
+      prefix: classpath:/templates/
+      suffix: .jsp
+  #启动多个视图
+  thymeleaf:
+    mode: HTML5
+    encoding: utf-8
+    content-type: text/html
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    template-resolver-order: 1
+  freemarker:
+    charset: UTF-8
+    content-type: text/html
+    suffix: .ftl
+    template-loader-path: classpath:/ftl/
+    check-template-location: true
+    cache: false
 server:
   port: 8000
 eureka:
@@ -28,4 +44,7 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://localhost:${server.port}/eureka/
-
+#加载mybatis配置文件及映射文件
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
