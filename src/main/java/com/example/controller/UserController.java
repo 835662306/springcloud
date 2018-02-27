@@ -2,9 +2,11 @@ package com.example.controller;
 
 import com.example.dao.UserRepostitory;
 import com.example.entry.User;
+import com.example.publicResult.ActionResult;
 import com.example.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.mapping.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,8 +50,10 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("getAll")
-    public String getAll(){
+    public ActionResult getAll(){
         List<User> all = userService.getAll();
-        return all.toString();
+        ActionResult actionResult = new ActionResult();
+        actionResult.put("data", all);
+        return actionResult;
     }
 }
