@@ -16,24 +16,24 @@ spring:
       file-size-threshold: 1MB  # 当上传文件达到1MB的时候进行磁盘写入
       location: /  # 上传的临时目录
   #视图模型解析,静态资源后缀配置
-  mvc:
-    view:
-      prefix: classpath:/templates/
-      suffix: .jsp
+#  mvc:
+#    view:
+#      prefix: classpath:/templates/
+#      suffix: .jsp
   #启动多个视图
-  thymeleaf:
-    mode: HTML5
-    encoding: utf-8
-    content-type: text/html
-    prefix: classpath:/templates/
-    suffix: .html
-    cache: false
-    template-resolver-order: 1
+#  thymeleaf:
+#    mode: HTML5
+#    encoding: utf-8
+#    content-type: text/html
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    cache: false
+#    template-resolver-order: 1
   freemarker:
     charset: UTF-8
     content-type: text/html
     suffix: .ftl
-    template-loader-path: classpath:/ftl/
+    template-loader-path: classpath:/templates/ftl/
     check-template-location: true
     cache: false
 server:

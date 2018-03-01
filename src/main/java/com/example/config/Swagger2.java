@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -42,6 +44,15 @@ public class Swagger2 {
      * @ApiProperty：用对象接收参数时，描述对象的一个字段
      * @return
      */
+    /**
+     * @ApiModel 表明这是一个被swagger框架管理的model，用于class上
+     * @ApiModelProperty 这里顾名思义，就是标注在被标注了@ApiModel的class的属性上，这里的value是对字段的描述，example是取值例子，
+     * 注意这里的example很有用，对于前后端开发工程师理解文档起到了关键的作用，因为会在api文档页面上显示出这些取值来；这个注解还有一
+     * 些字段取值，可以自己研究，举例说一个：position，表明字段在model中的顺序
+     * @ApiOperation标注在具体请求上，value和notes的作用差不多，都是对请求进行说明；tags则是对请求进行分类的，比如你有好几个controller，
+     * 分别属于不同的功能模块，那这里我们就可以使用tags来区分了，看上去很有条理
+     * @return
+     */
     @Bean
     public Docket createRestApi() {
         Predicate<RequestHandler> predicate = new Predicate<RequestHandler>() {
@@ -57,18 +68,19 @@ public class Swagger2 {
                 return false;
             }
         };
-        return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo())
-                .useDefaultResponseMessages(false)
-                .select()
-                .apis(predicate)
-                .build();
 //        return new Docket(DocumentationType.SWAGGER_2)
 //                .apiInfo(apiInfo())
+//                .useDefaultResponseMessages(false)
 //                .select()
-//                //.apis(RequestHandlerSelectors.basePackage("com.example.controller"))
-//                .paths(PathSelectors.any())
+//                .apis(predicate)
 //                .build();
+        //对某个包或类的监控
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.example.controller"))
+                .paths(PathSelectors.any())
+                .build();
     }
 
 }
