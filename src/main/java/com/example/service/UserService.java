@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entry.User;
+import com.example.entry.BpUser;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Mapper
 public interface UserService {
-    List<User> getAll();
+    List<BpUser> getAll();
 
-    User getOne(Integer id);
+    BpUser getOne(Integer id);
 }

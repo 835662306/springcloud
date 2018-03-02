@@ -1,14 +1,10 @@
 package com.example.controller;
 
-import com.example.dao.UserRepostitory;
-import com.example.entry.User;
+import com.example.dao.UserRepository;
+import com.example.entry.BpUser;
 import com.example.publicResult.ActionResult;
 import com.example.service.UserService;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import jdk.nashorn.internal.parser.JSONParser;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.mapping.ResultMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,7 +23,7 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepostitory userRepostitory;
+    private UserRepository userRepository;
 
     @Autowired
     private UserService userService;
@@ -59,7 +55,7 @@ public class UserController {
     @ResponseBody
     @GetMapping("getAll")
     public ActionResult getAll(){
-        List<User> all = userService.getAll();
+        List<BpUser> all = userService.getAll();
         ActionResult actionResult = new ActionResult();
         actionResult.put("data", all);
         return actionResult;

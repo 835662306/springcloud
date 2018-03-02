@@ -1,36 +1,74 @@
 package com.example.entry;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
 
 /**
  * @Company
  * @Discription
  * @Author guoxiaojing
- * @CreateDate 2018/2/12 10:13
+ * @CreateDate 2018/3/2 9:52
  * @Version 1.0
  */
-@Entity
-@Table(name = "bp_user")
-public class User implements Serializable{
+@Table
+@Entity(name = "u_user")
+public class User implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 20, unique = true ,nullable = false) //唯一 不能为 null
-    private String username;
+    @Column(name="nickname")
+    private String nickName;
 
-    @Column(length = 20)
-    private String passworld;
+    @Column(name="email")
+    private String email;
 
-    @Column(length = 3)
-    private Integer age;
+    @Column(name="pswd")
+    private String pswd;
 
-    @Column(length = 20)
-    private String birthday;
+    @Column(name = "create_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 
-    @Column(length = 50)
-    private String hobby;
+    @Column(name = "create_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date lastLoginTime;
+
+    @Column(name="status")
+    private Integer status;
+
+    /**
+     * 角色(一个用户具有多个角色)
+     */
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH})
+    @JoinTable(name = "UserRole", joinColumns = {@JoinColumn(name = "userId")}, inverseJoinColumns = {@JoinColumn(name = "roleId")})
+    private Set<Role> roleList;
+
+    public Set<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(Set<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    public User(String nickName, String email, String pswd, Date createTime, Date lastLoginTime, Integer status) {
+        this.nickName = nickName;
+        this.email = email;
+        this.pswd = pswd;
+        this.createTime = createTime;
+        this.lastLoginTime = lastLoginTime;
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;
@@ -40,55 +78,51 @@ public class User implements Serializable{
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public String getPassworld() {
-        return passworld;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassworld(String passworld) {
-        this.passworld = passworld;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getPswd() {
+        return pswd;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPswd(String pswd) {
+        this.pswd = pswd;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public String getHobby() {
-        return hobby;
+    public Date getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setHobby(String hobby) {
-        this.hobby = hobby;
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
     }
 
-    @Override
-    public String toString() {
-        return "UserModel{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", passworld='" + passworld + '\'' +
-                ", age=" + age +
-                ", birthday='" + birthday + '\'' +
-                ", hobby='" + hobby + '\'' +
-                '}';
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
