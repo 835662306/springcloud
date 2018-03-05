@@ -3,7 +3,6 @@ package com.example.dao;
 
 import com.example.entry.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
 /**
  * @Company
@@ -14,6 +13,5 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-    @Query("SELECT User from User u where u.nickName = ?1")
-    User getUserByName(String username);
+    User findByNickName(String nickName);
 }

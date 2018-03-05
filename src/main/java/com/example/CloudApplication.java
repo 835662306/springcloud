@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 @SpringBootApplication
 //@EnableEurekaServer
 //@EnableSwagger2 //开启swagger
+//@EnableOAuth2Sso
 @MapperScan("com.example.service")
 public class CloudApplication {
 

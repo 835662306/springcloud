@@ -38,7 +38,7 @@ public class User implements Serializable {
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
-    @Column(name = "create_time")
+    @Column(name = "last_login_time")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;

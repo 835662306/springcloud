@@ -36,6 +36,12 @@ spring:
     template-loader-path: classpath:/templates/ftl/
     check-template-location: true
     cache: false
+#RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 server:
   port: 8000
 eureka:
@@ -48,3 +54,16 @@ eureka:
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+
+#oauth2
+security:
+  oauth2:
+    client:
+      client-id: QeQmvLTfOdeHKPkwroxRO3uu
+      client-secret: NPmfxjHElsdtd20YdGqxjG0pGqG3Nsap
+      access-token-uri: http://openapi.baidu.com/oauth/2.0/token
+      user-authorization-uri: http://openapi.baidu.com/oauth/2.0/authorize
+    resource:
+      userInfoUri: https://openapi.baidu.com/rest/2.0/passport/users/getInfo
+
+

@@ -36,7 +36,7 @@ public class MyRealm extends AuthorizingRealm {
         logger.debug("登录操作进行登录认证......");
         UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
 
-        User user = userRepository.getUserByName(token.getUsername());
+        User user = userRepository.findByNickName(token.getUsername());
         if (user == null) {
             // 没找到帐号
             throw new UnknownAccountException(
