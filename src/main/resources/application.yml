@@ -36,12 +36,30 @@ spring:
     template-loader-path: classpath:/templates/ftl/
     check-template-location: true
     cache: false
-#RabbitMQ
+#RabbitMQ 配置
   rabbitmq:
     host: localhost
     port: 5672
     username: guest
     password: guest
+#kafka 配置
+#  kafka:
+#    bootstrap-servers:   #kafka集群地址
+#    listener:
+#      concurrency: 3  #指定listener 容器中的线程数，用于提高并发量
+#    producer:
+#      batch-size: 1000  #每次批量发送消息的数量
+#    consumer:
+#      group-id: myGroup  # 指定默认消费者group id
+#    template:
+#      default-topic: topic-1  # 指定默认topic id
+#mongodb 配置
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: mydb
+
 server:
   port: 8000
 eureka:
@@ -56,14 +74,14 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
 
 #oauth2
-security:
-  oauth2:
-    client:
-      client-id: QeQmvLTfOdeHKPkwroxRO3uu
-      client-secret: NPmfxjHElsdtd20YdGqxjG0pGqG3Nsap
-      access-token-uri: http://openapi.baidu.com/oauth/2.0/token
-      user-authorization-uri: http://openapi.baidu.com/oauth/2.0/authorize
-    resource:
-      userInfoUri: https://openapi.baidu.com/rest/2.0/passport/users/getInfo
+#security:
+#  oauth2:
+#    client:
+#      client-id: QeQmvLTfOdeHKPkwroxRO3uu
+#      client-secret: NPmfxjHElsdtd20YdGqxjG0pGqG3Nsap
+#      access-token-uri: http://openapi.baidu.com/oauth/2.0/token
+#      user-authorization-uri: http://openapi.baidu.com/oauth/2.0/authorize
+#    resource:
+#      userInfoUri: https://openapi.baidu.com/rest/2.0/passport/users/getInfo
 
 
