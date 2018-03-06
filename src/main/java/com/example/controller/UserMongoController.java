@@ -4,9 +4,9 @@ import com.example.dao.UserMongoRepository;
 import com.example.entry.UserMongo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  * @CreateDate 2018/3/5 16:29
  * @Version 1.0
  */
-@Controller
+@RestController
 public class UserMongoController {
     @Autowired
     private UserMongoRepository userMongoRepository;
