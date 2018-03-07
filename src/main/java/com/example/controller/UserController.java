@@ -60,4 +60,11 @@ public class UserController {
         actionResult.put("data", all);
         return actionResult;
     }
+
+    public static void main(String [] args){
+        Integer integer = 1;
+        int i = 1;
+        System.out.println(integer.equals(i));
+    }
+
 }

@@ -4,6 +4,7 @@ import com.example.dao.UserMongoRepository;
 import com.example.entry.UserMongo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,8 @@ public class UserMongoController {
         return user;
     }
 
+    //该方法支持跨域
+    @CrossOrigin
     @GetMapping("/find")
     public List<UserMongo> find() {
         List<UserMongo> userList = mongoTemplate.findAll(UserMongo.class);
