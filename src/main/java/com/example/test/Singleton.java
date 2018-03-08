@@ -1,5 +1,8 @@
 package com.example.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 单例模式
  * @Company
@@ -14,6 +17,7 @@ public class Singleton {
      * 私有方法，防止被实例化
      */
     private Singleton() {
+        List list = new ArrayList<>();
     }
 
     /**
