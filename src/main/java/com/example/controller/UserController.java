@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.common.ResultEnum;
 import com.example.dao.UserRepository;
 import com.example.entry.BpUser;
 import com.example.publicResult.ActionResult;
@@ -58,6 +59,7 @@ public class UserController {
     public ActionResult getAll(){
         List<BpUser> all = userService.getAll();
         ActionResult actionResult = new ActionResult();
+        actionResult.put("status", ResultEnum.ACCEPTED.getMsg());
         actionResult.put("data", all);
         return actionResult;
     }
