@@ -54,11 +54,11 @@ spring:
 #    template:
 #      default-topic: topic-1  # 指定默认topic id
 #mongodb 配置
-  data:
-    mongodb:
-      host: 127.0.0.1
-      port: 27017
-      database: mydb
+#  data:
+#    mongodb:
+#      host: 127.0.0.1
+#      port: 27017
+#      database: mydb
 
 server:
   port: 8000
