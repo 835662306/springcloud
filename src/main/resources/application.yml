@@ -7,6 +7,18 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource  #默认使用TomcatJDBD DataSource
   application:
     name: spring-cloud-eureka
+  redis:  #单机版
+      port: 6381
+      host: 39.106.127.25
+      database: 0
+#      pool: #集群版
+#        max-active: 8
+#        max-wait: -1
+#        max-idle: 8
+#        min-idle: 0
+#      sentinel:
+#        master: redis
+#        nodes: 39.106.127.25:26379
   #文件上传
   http:
     multipart:

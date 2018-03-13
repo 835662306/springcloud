@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,6 +18,8 @@ import java.lang.management.ManagementFactory;
 @Controller
 public class TestController {
 
+    @Autowired
+    private RedisTemplate redisTemplate;
     /**
      * 获取进程id
      * @return
@@ -23,6 +27,7 @@ public class TestController {
     @ResponseBody
     @RequestMapping("getPid")
     public String getPid(){
+        redisTemplate.opsForSet().add("list", 12346);
         try {
             String jvmName = ManagementFactory.getRuntimeMXBean().getName();
             return jvmName.split("@")[0];
