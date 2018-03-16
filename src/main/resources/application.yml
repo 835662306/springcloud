@@ -95,5 +95,5 @@ mybatis:
 #      user-authorization-uri: http://openapi.baidu.com/oauth/2.0/authorize
 #    resource:
 #      userInfoUri: https://openapi.baidu.com/rest/2.0/passport/users/getInfo
-
-
+logging:
+  level: info
