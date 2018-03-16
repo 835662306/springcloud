@@ -5,6 +5,7 @@ import javax.xml.ws.Service;
 import java.net.URL;
 
 /**
+ * webservice必须暴露端口才能访问
  * java安装目录/bin下执行wsimport命令，将服务的的包名配置
  * wsimport -s F:\\  -keep webservice地址+?wsdl 会在包下生成服务端的接口
  * @Company
