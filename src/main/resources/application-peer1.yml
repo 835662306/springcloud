@@ -10,3 +10,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://peer2:8001/eureka/
+
+com:
+  example:
+    config: ${random.int}

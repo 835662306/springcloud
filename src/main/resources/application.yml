@@ -97,3 +97,5 @@ mybatis:
 #      userInfoUri: https://openapi.baidu.com/rest/2.0/passport/users/getInfo
 logging:
   level: info
+  file: /var/log
+debug: false

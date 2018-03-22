@@ -40,4 +40,43 @@ public class MysqlDBConfig {
         DruidDataSource druidDataSource = (DruidDataSource) mysqlDataSourceProperties().initializeDataSourceBuilder().build();
         return druidDataSource;
     }
+
+    /**
+     * 多数据源配置
+     * spring.datasource.primary.url=jdbc:mysql://localhost:3306/test1
+     * spring.datasource.primary.username=root
+     * .datasource.primary.password=root
+     * spring.datasource.primary.driver-class-name=com.mysql.jdbc.Driver
+
+     * spring.datasource.secondary.url=jdbc:mysql://localhost:3306/test2
+     * spring.datasource.secondary.username=root
+     * spring.datasource.secondary.password=root
+     * spring.datasource.secondary.driver-class-name=com.mysql.jdbc.Driver
+     */
+//    @Bean(name = "primaryDataSource")
+//    @Qualifier("primaryDataSource")
+//    @ConfigurationProperties(prefix="spring.datasource.primary")
+//    public DataSource primaryDataSource() {
+//        return DataSourceBuilder.create().build();
+//    }
+//
+//    @Bean(name = "secondaryDataSource")
+//    @Qualifier("secondaryDataSource")
+//    @Primary
+//    @ConfigurationProperties(prefix="spring.datasource.secondary")
+//    public DataSource secondaryDataSource() {
+//        return DataSourceBuilder.create().build();
+//    }
+
+//    @Bean(name = "primaryJdbcTemplate")
+//    public JdbcTemplate primaryJdbcTemplate(
+//            @Qualifier("primaryDataSource") DataSource dataSource) {
+//        return new JdbcTemplate(dataSource);
+//    }
+//
+//    @Bean(name = "secondaryJdbcTemplate")
+//    public JdbcTemplate secondaryJdbcTemplate(
+//            @Qualifier("secondaryDataSource") DataSource dataSource) {
+//        return new JdbcTemplate(dataSource);
+//    }
 }
