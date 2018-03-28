@@ -13,6 +13,7 @@ import java.util.List;
  * @Version 1.0
  */
 @Mapper
+//@FunctionalInterface
 public interface UserService {
     List<BpUser> getAll();
 
