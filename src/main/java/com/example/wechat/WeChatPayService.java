@@ -24,7 +24,7 @@ public class WeChatPayService {
     /**
      *微信支付统一下单
      **/
-    public Map<String,Object> unifiedOrder(Order order, Map<String,Object> map) {
+    public static Map<String,Object> unifiedOrder(Order order, Map<String,Object> map) {
         Map<String, Object> resultMap;
         try {
             WxPaySendData paySendData = new WxPaySendData();
@@ -71,7 +71,7 @@ public class WeChatPayService {
      * @param data
      * @return SortedMap<String,Object>
      */
-    private SortedMap<String,Object> buildParamMap(WxPaySendData data) {
+    private static SortedMap<String,Object> buildParamMap(WxPaySendData data) {
         SortedMap<String,Object> paramters = new TreeMap<String, Object>();
         if (null != data){
             if (StringUtils.isNotEmpty(data.getAppId())){
