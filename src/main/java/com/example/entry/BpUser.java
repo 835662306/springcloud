@@ -91,4 +91,30 @@ public class BpUser implements Serializable{
                 ", hobby='" + hobby + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BpUser bpUser = (BpUser) o;
+
+        if (id != null ? !id.equals(bpUser.id) : bpUser.id != null) return false;
+        if (username != null ? !username.equals(bpUser.username) : bpUser.username != null) return false;
+        if (passworld != null ? !passworld.equals(bpUser.passworld) : bpUser.passworld != null) return false;
+        if (age != null ? !age.equals(bpUser.age) : bpUser.age != null) return false;
+        if (birthday != null ? !birthday.equals(bpUser.birthday) : bpUser.birthday != null) return false;
+        return hobby != null ? hobby.equals(bpUser.hobby) : bpUser.hobby == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (passworld != null ? passworld.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (hobby != null ? hobby.hashCode() : 0);
+        return result;
+    }
 }
